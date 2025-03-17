@@ -98,7 +98,7 @@ function EntryDetail() {
             <div className="input-group">
               <textarea value={entry.content} className="textarea-input" disabled />
             </div>
-            <div >
+            <div className="entry-buttons">
               <button onClick={() => setEditMode(true)} className="button btn-edit">Edit</button>
               <button onClick={handleDelete} className="button btn-delete">Delete</button>
               <button onClick={() => navigate("/entries")} className="button btn-back">Back</button>

@@ -202,11 +202,12 @@ body {
     text-align: center;
     background-color: #F9ED90;
     border-radius: 5px 0px 0px 5px;
+    height: 1.3rem;
   }
 
   .text-input{
     border-radius: 0px 5px 5px 0px;
-    height: fit-content;
+    height: 1.3rem;
     color: black;
     background-color: white;
   }
@@ -293,6 +294,11 @@ body {
     text-decoration: none;
     color: black;
     font-weight: bold;
+  }
+
+  .entry-buttons{
+    display: flex;
+    justify-content: space-evenly;
   }
   
   .btn-save {

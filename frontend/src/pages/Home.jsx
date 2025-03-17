@@ -19,8 +19,8 @@ export default function Home() {
         <h2 className="subtitle">Capture Your Thoughts, One Entry at a Time</h2>
         <p className="description">
           Your place to unwind, reflect, and capture your thoughts.
-          Just start writing—you'll love it!
         </p>
+        <p className="description">Just start writing—you'll love it!</p>
         </div>
 
         <div className="button-container">
