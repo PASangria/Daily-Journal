@@ -12,15 +12,34 @@ def get_entries():
 
 @bp.route("/entries", methods=["POST"])
 def add_entry():
-    data = request.json
-    new_entry = JournalEntry(
-        date=datetime.strptime(data["date"], "%Y-%m-%d"),
-        title=data["title"],
-        content=data["content"]
-    )
-    db.session.add(new_entry)
-    db.session.commit()
-    return jsonify({"message": "Entry added"}), 201
+    try:
+        data = request.json
+        print("Received data:", data)  # Debugging line
+        new_entry = JournalEntry(
+            date=datetime.strptime(data["date"], "%Y-%m-%d"),
+            title=data["title"],
+            content=data["content"]
+        )
+        db.session.add(new_entry)
+        db.session.commit()
+        return jsonify({"message": "Entry added"}), 201
+    except Exception as e:
+        print("Error adding entry:", e)  # Print error to terminal
+        return jsonify({"error": str(e)}), 500
+
+@bp.route("/entries/<int:id>", methods=["GET"])
+def get_entry(id):
+    entry = JournalEntry.query.get(id)
+    if not entry:
+        return jsonify({"error": "Entry not found"}), 404
+
+    return jsonify({
+        "id": entry.id,
+        "date": entry.date.strftime("%Y-%m-%d"),
+        "title": entry.title,
+        "content": entry.content
+    })
+
 
 @bp.route("/entries/<int:id>", methods=["PUT"])
 def update_entry(id):
