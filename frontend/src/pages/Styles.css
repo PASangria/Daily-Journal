@@ -337,7 +337,7 @@ body {
         font-size: 1.4rem;
     }
 
-    .form-container {
+    .form-container, .entry-container {
         width: 70%;
         padding: 20px;
         margin-top: auto;
@@ -353,7 +353,7 @@ body {
         font-size: 1.4rem;
     }
 
-    .form-container {
+    .form-container, .entry-container {
         width: 70%;
         padding: 20px;
         margin-top: 20%;
