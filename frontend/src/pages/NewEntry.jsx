@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "./Styles.css"; 
-import journalImage from "../assets/journaling.png"; // Ensure correct image import
+import journalImage from "../assets/journaling.png"; 
 
 function NewEntry({ onEntryAdded }) {
   const [title, setTitle] = useState("");

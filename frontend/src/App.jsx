@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import Entries from "./pages/Entries";
 import NewEntry from "./pages/NewEntry";
 import EntryDetail from "./pages/EntryDetail";

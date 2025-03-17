@@ -275,12 +275,14 @@ body {
     font-size: 1rem;
     margin: 0;
     margin-bottom: -10px;
+    text-align: left;
   }
   
   .entry-date {
     font-size: 0.6rem;
     color: gray;
     margin-top: none;
+    text-align: left;
   }
   
   .view-button {

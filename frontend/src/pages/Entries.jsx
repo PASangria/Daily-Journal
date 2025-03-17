@@ -1,9 +1,20 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import journalImage from "../assets/journaling.png";
+import diaryImage from "../assets/diary.png";
 
-function Entries({ entries }) {
+function Entries() {
+  const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/entries")
+      .then((res) => res.json())
+      .then((data) => setEntries(data))
+      .catch((error) => console.error("Error fetching entries:", error));
+  }, []);
+
   return (
-    <div className="page-container"> 
+    <div className="page-container">
       {/* Header */}
       <div className="header">
         <div className="logo">
@@ -15,30 +26,31 @@ function Entries({ entries }) {
         </div>
       </div>
 
-    <div className="entry-container">
+      {/* Journal Entries */}
+      <div className="entry-container">
         <h1 className="entry-label">Journal Entries</h1>
         <ul className="entry-list">
-        {entries
-            .slice(0, 4)
-            .sort((a, b) => b.id - a.id)
-            .map(entry => (
-            <li key={entry.id} className="entry-item">
+          {entries
+            .sort((a, b) => b.id - a.id) // Sorting in descending order
+            .slice(0, 4) // Limit to 4 most recent entries
+            .map((entry) => (
+              <li key={entry.id} className="entry-item">
                 <div className="entry-icon">
-                <img  src="../src/assets/diary.png" alt="diary-icon" />
+                  <img src={diaryImage} alt="diary-icon" />
                 </div>
                 <div className="entry-content">
-                <h3 className="entry-title">{entry.title}</h3>
-                <p className="entry-date">{entry.date}</p>
+                  <h3 className="entry-title">{entry.title}</h3>
+                  <p className="entry-date">{entry.date}</p>
                 </div>
                 <Link to={`/entries/${entry.id}`} className="view-button">
-                View
+                  View
                 </Link>
-            </li>
+              </li>
             ))}
         </ul>
+      </div>
 
-    </div>
-    <div className="footer"></div>
+      <div className="footer"></div>
     </div>
   );
 }
